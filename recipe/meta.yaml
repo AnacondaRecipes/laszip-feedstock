@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  skip: True  # [win and py!=36]
+  number: 0
+  skip: True  # [py<38]
 
 requirements:
   build:
@@ -22,9 +22,14 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - setuptools
+    - wheel
+    - pip
   run:
 
 test:
+  imports:
+    - laszip
   commands:
     - test -d $PREFIX/include/laszip  # [not win]
     - if not exist %LIBRARY_INC%\\laszip exit 1  # [win]
