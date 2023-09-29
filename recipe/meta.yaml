@@ -13,7 +13,6 @@ source:
 
 build:
   number: 0
-  skip: True  # [py<38]
 
 requirements:
   build:
@@ -22,9 +21,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - setuptools
-    - wheel
-    - pip
   run:
 
 test:
