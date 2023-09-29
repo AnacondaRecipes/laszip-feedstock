@@ -12,13 +12,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  skip: True  # [win and py!=36]
+  number: 0
 
 requirements:
   build:
     - cmake
-    - make
+    - make  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
@@ -30,14 +29,14 @@ test:
     - if not exist %LIBRARY_INC%\\laszip exit 1  # [win]
 
 about:
-  home: https://www.laszip.org
+  home: https://laszip.org/
   license: LGPL-2.1-or-later
   license_family: LGPL
   license_file: COPYING
   summary: 'LASzip is a compression library for compressing ASPRS LAS format'
   description: |
     Quickly turns bulky LAS files into compact LAZ files without information loss.
-  doc_url: https://www.laszip.org/
+  doc_url: https://laszip.org/
   dev_url: https://github.com/LASzip/LASzip
 
 extra:
